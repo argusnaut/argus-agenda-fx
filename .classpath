@@ -47,5 +47,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/argus-agenda-entidades"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/argus-agenda-repositorios"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
