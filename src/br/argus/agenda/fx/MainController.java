@@ -33,7 +33,7 @@ public class MainController implements Initializable {
 	@FXML
 	private TextField txfNome;
 	@FXML
-	private TextField txfIdade;
+	private TextField txfEmail;
 	@FXML
 	private TextField txfTelefone;
 	@FXML
@@ -52,7 +52,7 @@ public class MainController implements Initializable {
 				.addListener((observador, contatoAntigo, contatoNovo) -> {
 					if (contatoNovo != null) {
 						txfNome.setText(contatoNovo.getNome());
-						txfIdade.setText(String.valueOf(contatoNovo.getIdade()));
+						txfEmail.setText(contatoNovo.getEmail());
 						txfTelefone.setText(contatoNovo.getTelefone());
 						this.contatoSelecionado = contatoNovo;
 					}
@@ -64,7 +64,7 @@ public class MainController implements Initializable {
 	public void botaoInserir_Action() {
 		this.ehInserir = true;
 		this.txfNome.setText("");
-		this.txfIdade.setText("");
+		this.txfEmail.setText("");
 		this.txfTelefone.setText("");
 		habilitarEdicaoAgenda(true);
 	}
@@ -73,7 +73,7 @@ public class MainController implements Initializable {
 		habilitarEdicaoAgenda(true);
 		this.ehInserir = false;
 		this.txfNome.setText(this.contatoSelecionado.getNome());
-		this.txfIdade.setText(Integer.toString(this.contatoSelecionado.getIdade()));
+		this.txfEmail.setText(this.contatoSelecionado.getEmail());
 		this.txfTelefone.setText(this.contatoSelecionado.getTelefone());
 	}
 
@@ -100,7 +100,7 @@ public class MainController implements Initializable {
 		AgendaRepositorio<Contato> repositorioContato = new ContatoRepositorio();
 		Contato contato = new Contato();
 		contato.setNome(txfNome.getText());
-		contato.setIdade(Integer.parseInt(txfIdade.getText()));
+		contato.setEmail(txfEmail.getText());
 		contato.setTelefone(txfTelefone.getText());
 		if (this.ehInserir) {
 			repositorioContato.inserir(contato);
@@ -121,7 +121,7 @@ public class MainController implements Initializable {
 
 	private void habilitarEdicaoAgenda(Boolean edicaoEstaHabilitada) {
 		this.txfNome.setDisable(!edicaoEstaHabilitada);
-		this.txfIdade.setDisable(!edicaoEstaHabilitada);
+		this.txfEmail.setDisable(!edicaoEstaHabilitada);
 		this.txfTelefone.setDisable(!edicaoEstaHabilitada);
 		this.botaoSalvar.setDisable(!edicaoEstaHabilitada);
 		this.botaoCancelar.setDisable(!edicaoEstaHabilitada);
