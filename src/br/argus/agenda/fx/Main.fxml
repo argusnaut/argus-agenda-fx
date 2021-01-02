@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.cell.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -8,14 +9,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.cell.PropertyValueFactory ?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity"
-	minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0"
-	prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="br.argus.agenda.fx.MainController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.argus.agenda.fx.MainController">
 	<children>
-		<Pane prefHeight="40.0" prefWidth="600.0"
-			style="-fx-background-color: #bbb;">
+		<Pane prefHeight="40.0" prefWidth="600.0" style="-fx-background-color: #bbb;">
 			<children>
 				<Label layoutX="14.0" layoutY="5.0" text="Minha Agenda">
 					<font>
@@ -24,62 +20,44 @@
 				</Label>
 			</children>
 		</Pane>
-		<Pane prefHeight="230.0" prefWidth="600.0"
-			style="-fx-background-color: #eee;">
+		<Pane prefHeight="230.0" prefWidth="600.0" style="-fx-background-color: #eee;">
 			<children>
-				<TableView fx:id="tabelaContatos" layoutX="5.0"
-					layoutY="6.0" prefHeight="180.0" prefWidth="590.0">
+				<TableView fx:id="tabelaContatos" layoutX="5.0" layoutY="6.0" prefHeight="160.0" prefWidth="590.0">
 					<columns>
-						<TableColumn editable="false" prefWidth="315.0"
-							text="Nome">
+						<TableColumn editable="false" prefWidth="315.0" text="Nome">
 							<cellValueFactory>
 								<PropertyValueFactory property="nome" />
 							</cellValueFactory>
 						</TableColumn>
-						<TableColumn editable="false" prefWidth="100.0"
-							text="Idade">
+						<TableColumn editable="false" prefWidth="100.0" text="Idade">
 							<cellValueFactory>
 								<PropertyValueFactory property="idade" />
 							</cellValueFactory>
 						</TableColumn>
-						<TableColumn editable="false" prefWidth="175.0"
-							text="Telefone">
+						<TableColumn editable="false" prefWidth="175.0" text="Telefone">
 							<cellValueFactory>
 								<PropertyValueFactory property="telefone" />
 							</cellValueFactory>
 						</TableColumn>
 					</columns>
 				</TableView>
-				<Button fx:id="botaoInserir" layoutX="5.0" layoutY="192.0"
-					mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0"
-					text="Inserir" />
-				<Button fx:id="botaoAlterar" layoutX="205.0" layoutY="192.0"
-					mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0"
-					text="Alterar" />
-				<Button fx:id="botaoExcluir" layoutX="405.0" layoutY="192.0"
-					mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0"
-					text="Excluir" />
+				<Button fx:id="botaoInserir" layoutX="5.0" layoutY="177.0" mnemonicParsing="false" onAction="#botaoInserir_Action" prefHeight="30.0" prefWidth="190.0" text="Inserir" />
+				<Button fx:id="botaoAlterar" layoutX="205.0" layoutY="177.0" mnemonicParsing="false" onAction="#botaoAlterar_Action" prefHeight="30.0" prefWidth="190.0" text="Alterar" />
+				<Button fx:id="botaoExcluir" layoutX="405.0" layoutY="177.0" mnemonicParsing="false" onAction="#botaoExcluir_Action" prefHeight="30.0" prefWidth="190.0" text="Excluir" />
 			</children>
 		</Pane>
-		<TitledPane collapsible="false" prefHeight="160.0"
-			prefWidth="600.0" text="Informações de Contato">
+		<TitledPane collapsible="false" prefHeight="160.0" prefWidth="600.0" text="Informações de Contato">
 			<content>
 				<GridPane>
 					<columnConstraints>
-						<ColumnConstraints hgrow="SOMETIMES"
-							maxWidth="316.0" minWidth="10.0" prefWidth="316.0" />
-						<ColumnConstraints hgrow="SOMETIMES"
-							maxWidth="187.0" minWidth="10.0" prefWidth="131.0" />
-						<ColumnConstraints hgrow="SOMETIMES"
-							maxWidth="170.0" minWidth="10.0" prefWidth="131.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="316.0" minWidth="10.0" prefWidth="316.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="131.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="10.0" prefWidth="131.0" />
 					</columnConstraints>
 					<rowConstraints>
-						<RowConstraints minHeight="10.0" prefHeight="30.0"
-							vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="30.0"
-							vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="30.0"
-							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 					</rowConstraints>
 					<children>
 						<Label text="Nome:" />
@@ -90,20 +68,14 @@
 								<Insets right="10.0" />
 							</GridPane.margin>
 						</TextField>
-						<TextField fx:id="txfIdade" GridPane.columnIndex="1"
-							GridPane.rowIndex="1">
+						<TextField fx:id="txfIdade" GridPane.columnIndex="1" GridPane.rowIndex="1">
 							<GridPane.margin>
 								<Insets right="10.0" />
 							</GridPane.margin>
 						</TextField>
-						<TextField fx:id="txfTelefone" GridPane.columnIndex="2"
-							GridPane.rowIndex="1" />
-						<Button fx:id="botaoSalvar" mnemonicParsing="false"
-							prefHeight="25.0" prefWidth="120.0" text="Salvar"
-							GridPane.columnIndex="2" GridPane.rowIndex="2" />
-						<Button fx:id="botaoCancelar" mnemonicParsing="false"
-							prefHeight="25.0" prefWidth="120.0" text="Cancelar"
-							GridPane.columnIndex="1" GridPane.rowIndex="2" />
+						<TextField fx:id="txfTelefone" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+						<Button fx:id="botaoSalvar" mnemonicParsing="false" onAction="#botaoSalvar_Action" prefHeight="25.0" prefWidth="120.0" text="Salvar" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+						<Button fx:id="botaoCancelar" mnemonicParsing="false" onAction="#botaoCancelar_Action" prefHeight="25.0" prefWidth="120.0" text="Cancelar" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 					</children>
 				</GridPane>
 			</content>
