@@ -1,12 +1,14 @@
 package br.argus.agenda.fx;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import br.argus.agenda.entidades.Contato;
 import br.argus.agenda.repositorios.impl.ContatoRepositorio;
+import br.argus.agenda.repositorios.impl.ContatoRepositorioJdbc;
 import br.argus.agenda.repositorios.interfaces.AgendaRepositorio;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -113,10 +115,18 @@ public class MainController implements Initializable {
 	}
 
 	private void carregarTabelaContatos() {
-		AgendaRepositorio<Contato> repositorioContato = new ContatoRepositorio();
-		List<Contato> contatos = repositorioContato.selecionar();
-		ObservableList<Contato> contatosObservableList = FXCollections.observableArrayList(contatos);
-		this.tabelaContatos.getItems().setAll(contatosObservableList);
+		try {
+			AgendaRepositorio<Contato> repositorioContato = new ContatoRepositorioJdbc();
+			List<Contato> contatos = repositorioContato.selecionar();
+			ObservableList<Contato> contatosObservableList = FXCollections.observableArrayList(contatos);
+			this.tabelaContatos.getItems().setAll(contatosObservableList);
+		} catch (SQLException e) {
+			Alert mensagemErro = new Alert(AlertType.ERROR);
+			mensagemErro.setTitle("Erro!");
+			mensagemErro.setHeaderText("Erro no banco de dados.");
+			mensagemErro.setContentText("Houve um erro ao obter a lista de contatos: " + e.getMessage());
+			mensagemErro.showAndWait();
+		}
 	}
 
 	private void habilitarEdicaoAgenda(Boolean edicaoEstaHabilitada) {
